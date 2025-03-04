@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Archiving Activism</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contact-form label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .contact-form button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #b38c52;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #8c6a3e;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Archiving Activism</h1>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="freedom-school.html">Freedom Schools</a>
+            <a href="team.html">Project Team</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="about">
+        <h1>Contact Us</h1>
+        <p>If you have any questions or would like to get involved with Archiving Activism, please reach out to us using the form below.</p>
+
+        <form class="contact-form" action="#" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2025 Archiving Activism. All Rights Reserved.
+    </footer>
+</body>
+</html>
