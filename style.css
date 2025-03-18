@@ -518,3 +518,52 @@ strong {
     background-color: var(--text-color);
     color: var(--primary-bg);
 }
+
+.contact-form,
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+}
+.contact-form label,
+.newsletter-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.contact-form input,
+.contact-form textarea,
+.newsletter-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.contact-form button,
+.newsletter-form button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #b38c52;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.contact-form button:hover,
+.newsletter-form button:hover {
+    background-color: #8c6a3e;
+}
+.newsletter-section {
+    text-align: center;
+    margin-top: 50px;
+}
+.newsletter-section h2 {
+    margin-bottom: 10px;
+}
+
+.form-area {
+    background-color: black;
+    padding: 50px;
+}
