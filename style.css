@@ -1,6 +1,6 @@
 :root {
     /* Background Colors */
-    --primary-bg:#361F0E;
+    --primary-bg: #351102;
     --secondary-bg: black;
 
     /* Text Colors */
@@ -78,7 +78,6 @@ p {
     font-size: 32px;
     font-weight: bold;
     margin-left: 20px;
-    color: var(--text-color);
     border-bottom: var(--accent-color) solid 1px;
 }
 
@@ -302,12 +301,10 @@ button:hover {
     margin-right: auto;
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 20px;
     font-size: 14px;
-    background-color: var(--primary-bg);
     color: var(--text-muted);
 }
 
@@ -511,3 +508,8 @@ strong {
 
 .left-zone { left: 0; }
 .right-zone { right: 0; }
+
+.cta p{
+    color: var(--nav-hover);
+    font-size: 1.5em;
+}
