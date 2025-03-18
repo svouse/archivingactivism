@@ -513,3 +513,8 @@ strong {
     color: var(--nav-hover);
     font-size: 1.5em;
 }
+
+.impact-words {
+    background-color: var(--text-color);
+    color: var(--primary-bg);
+}
