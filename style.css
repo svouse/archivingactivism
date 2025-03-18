@@ -1,11 +1,11 @@
 :root {
     /* Background Colors */
-    --primary-bg: #834D22; /* Rich brown */
-    --secondary-bg: #361F0E; /* Deep espresso brown */
+    --primary-bg:#361F0E;
+    --secondary-bg: black;
 
     /* Text Colors */
-    --text-color: #F2F2F2; /* Soft white for readability */
-    --text-muted: #F2F2F2; /* Subtle for secondary text */
+    --text-color: #E2CCA3; /* Soft white for readability */
+    --text-muted: #E2CCA3; /* Subtle for secondary text */
 
     /* Titles */
     --title-color: #D98A3A; /* Warm golden-orange for strong contrast */
@@ -28,20 +28,35 @@
     --overlay-hover: rgba(0, 0, 0, 0.8);
 }
 
-
-
+@font-face {
+    font-family: "Oswald";
+    src: url("assets/font/Oswald.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     margin: 0;
     background-color: var(--primary-bg);
-    font-family: "Roboto", sans-serif;
+    font-family: "Oswald", sans-serif;
     color: var(--text-color);
-    line-height: 1.6;
     padding-top: 140px;
+}
+
+h1, h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-weight: 800;
 }
 
 h1, p {
     margin: 0;
+}
+
+p {
+    font-weight: 100; /* Lighter font weight */
+    letter-spacing: 0.09em;  /* Adjust spacing */
+    line-height: 1.3;
 }
 
 /* Header */
@@ -88,9 +103,10 @@ h1, p {
 }
 
 /* Landing Page */
+/* Landing Page */
 .landing {
     text-align: center;
-    padding: 40px 6.9444% 90px 6.9444%;
+    padding-top: 4%;
     position: relative;
     overflow: hidden;
 }
@@ -107,55 +123,62 @@ h1, p {
     margin-bottom: 30px;
     color: var(--text-muted);
 }
-
-/* Slideshow */
-.slideshow-container {
+/* Make gallery container full width */
+.gallery-container {
     position: relative;
-    max-width: 80%;
-    margin: auto;
+    width: 100vw;
     overflow: hidden;
-}
-
-.slideshow {
+    background-color: #f5f5f5;
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
-.slideshow img {
-    max-height: 20em;
+/* Wrapper that allows smooth scrolling */
+.gallery-wrapper {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 100vw;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide scrollbar */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+}
+
+/* Hide scrollbar for Chrome/Safari */
+.gallery-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Gallery row */
+.gallery {
+    display: flex;
+    gap: 0;
+    flex-wrap: nowrap;
+    width: max-content;
+}
+
+/* Ensure images fully span the width */
+.gallery img {
+    height: 300px;
     width: auto;
-    border-radius: 5px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    flex-shrink: 0;
+    object-fit: cover;
 }
 
-.slideshow img:hover {
-    opacity: 1;
-}
-
-.slideshow-controls {
+/* Hover zones for scrolling */
+.scroll-zone {
     position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
+    top: 0;
+    width: 15vw;
+    height: 100%;
+    z-index: 10;
 }
 
-.slideshow-controls button {
-    background: var(--overlay-bg);
-    border: none;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 18px;
-}
-
-.slideshow-controls button:hover {
-    background: var(--overlay-hover);
-}
+.left { left: 0; }
+.right { right: 0; }
 
 /* Logos */
 .logos {
@@ -194,7 +217,7 @@ h1, p {
 .about-list {
     margin: 40px 0;
     padding: 20px;
-    background: rgba(54, 31, 14, .5);
+    background-color: black;
 }
 
 .about-steps {
@@ -221,7 +244,7 @@ h1, p {
 }
 
 .subtext a {
-    color: var(--text-color);
+    color: var(--nav-hover);
     text-decoration: underline; /* Ensures it's clearly a link */
     font-weight: bold;
     transition: color 0.3s ease-in-out;
@@ -234,9 +257,9 @@ h1, p {
 
 .about-goal {
     font-size: 18px;
-    font-weight: bold;
-    text-align: center;
     margin-top: 30px;
+    line-height: 1.5;
+    text-align: center;
 }
 
 .about-buttons {
@@ -436,3 +459,55 @@ h3 {
         margin: 20px auto;
     }
 }
+.carousel-container {
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    background-color: #f5f5f5;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    width: max-content;
+    transform: translateX(0);
+}
+
+.carousel-track img {
+    height: 300px;
+    width: auto;
+    flex-shrink: 0;
+    object-fit: cover;
+    border: 3px solid var(--secondary-bg);
+    filter: sepia(70%);
+}
+
+ img {
+    filter: sepia(70%);
+}
+
+img:hover {
+    filter: sepia(0%);
+}
+
+strong {
+    color: #F6500B;
+}
+
+.scroll-zone {
+    position: absolute;
+    top: 0;
+    width: 15vw;
+    height: 100%;
+    z-index: 10;
+}
+
+.left-zone { left: 0; }
+.right-zone { right: 0; }
