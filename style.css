@@ -490,9 +490,7 @@ h3 {
     filter: sepia(70%);
 }
 
-img:hover {
-    filter: sepia(0%);
-}
+
 
 strong {
     color: #F6500B;
@@ -508,6 +506,48 @@ strong {
 
 .left-zone { left: 0; }
 .right-zone { right: 0; }
+
+.left-zone::before {
+    content: '←';
+    transition: opacity 0.3s ease-in-out;
+}
+
+.right-zone::after {
+    content: '→';
+    font-size: 40px;
+    transition: opacity 0.3s ease-in-out;
+}
+.left-zone:hover::before, .right-zone:hover::after {
+    opacity: 0;
+}
+
+.left-zone,
+.right-zone {
+    width: 80px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5); /* Darkened overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.left-zone::before,
+.right-zone::after {
+    font-size: 40px;
+    color: white;
+}
+
+.left-zone:hover,
+.right-zone:hover {
+    background: rgba(0, 0, 0, 0);
+}
+.left-zone {
+    left: 0;
+}
+.right-zone {
+    right: 0;
+}
 
 .cta p{
     color: var(--nav-hover);

@@ -3,12 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let images = Array.from(carouselTrack.children);
     let imageWidth, trackWidth, positionX = 0;
 
-    let baseSpeed =.2;
-    let hoverSpeed = 2;
+    let baseSpeed = 1; // Smooth default scrolling speed
+    let hoverSpeed = 2.6;  // Faster on hover
     let currentSpeed = baseSpeed;
     let targetSpeed = baseSpeed;
     let scrollDirection = -1;
     let animationFrame;
+    let isHovering = false; // Track hover state
 
     function computeDimensions() {
         images = Array.from(carouselTrack.children);
@@ -27,10 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateScroll() {
-        currentSpeed += (targetSpeed - currentSpeed) * 0.1;
+        // **Smooth easing to mimic inertia**
+        currentSpeed += (targetSpeed - currentSpeed) * 0.07; // Lower factor = smoother acceleration & deceleration
+
         positionX += scrollDirection * currentSpeed;
 
-        // **Modulo trick applied in both directions**
+        // **Seamless looping without jumps**
         if (positionX <= -trackWidth) {
             positionX += trackWidth;
         } else if (positionX >= 0) {
@@ -43,23 +46,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function startAutoScroll() {
-        cancelAnimationFrame(animationFrame);
-        animationFrame = requestAnimationFrame(updateScroll);
+        if (!animationFrame) {
+            animationFrame = requestAnimationFrame(updateScroll);
+        }
     }
 
     function stopScrolling() {
         cancelAnimationFrame(animationFrame);
+        animationFrame = null;
     }
 
     function startHoverScroll(direction) {
-        scrollDirection = direction;
-        targetSpeed = hoverSpeed;
-        startAutoScroll();
+        if (!isHovering) {
+            isHovering = true;
+            scrollDirection = direction;
+            targetSpeed = hoverSpeed;
+        }
     }
 
     function stopHoverScroll() {
-        targetSpeed = baseSpeed;
-        startAutoScroll();
+        if (isHovering) {
+            isHovering = false;
+            targetSpeed = baseSpeed * 0.8; // **Let it "coast" before settling back to base speed**
+            setTimeout(() => {
+                targetSpeed = baseSpeed;
+            }, 300); // Delay full reset for a more natural feel
+        }
     }
 
     function initializeCarousel() {
